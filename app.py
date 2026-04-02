@@ -9,8 +9,13 @@ st.set_page_config(
     layout="wide",
 )
 
-# --- Carregamento dos dados ---
-df = pd.read_csv("https://raw.githubusercontent.com/profzappa/profGit/refs/heads/master/netflix_titles.csv")
+# --- Carregamento dos dados com cache ---
+@st.cache_data
+def carregar_dados():
+    """Carrega dados da Netflix com cache para melhor performance"""
+    return pd.read_csv("https://raw.githubusercontent.com/profzappa/profGit/refs/heads/master/netflix_titles.csv")
+
+df = carregar_dados()
 
 # --- Barra Lateral (Filtros) ---
 st.sidebar.header("🔍 Filtros")
