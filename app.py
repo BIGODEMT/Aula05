@@ -58,7 +58,7 @@ col_graf1, col_graf2 = st.columns(2)
 
 with col_graf1:
     if not df_filtrado.empty:
-        top_paises = df['country'].value_counts().head(10).reset_index()
+        top_paises = df_filtrado['country'].value_counts().head(10).reset_index()
         top_paises.columns = ['país', 'quantidade']
         grafico_paises = px.bar(
             top_paises,
